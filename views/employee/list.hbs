@@ -1,0 +1,40 @@
+{{! <h3><a class="btn btn-secondary" href="/"><i class="fa fa-plus"></i> Create New</a> Employee List</h3> }}
+<h3><a class="btn btn-secondary" href="/logout"> Logout</a></h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Image</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each list}}
+      {{#if this.email}}
+        <tr>
+          <td>{{this.fullName}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.mobile}}</td>
+          <td><img
+              src="{{this.image}}"
+              alt="{{this.fullname}}"
+              height="100"
+              width="100"
+            /></td>
+          <td>
+            <a href="/{{this._id}}"><i
+                class="fa fa-pencil fa-lg"
+                aria-hidden="true"
+              ></i></a>
+            <a
+              href="/delete/{{this._id}}"
+              onclick="return confirm('Are you sure to delete this record ?');"
+            ><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+          </td>
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
